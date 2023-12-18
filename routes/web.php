@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('checkout');
 });
+
+Route::get('/generateToken', [CheckoutController::class, 'generateToken']);
+Route::get('/mnoCheckout', [CheckoutController::class, 'initiateMnoCheckout']);
+
