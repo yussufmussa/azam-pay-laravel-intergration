@@ -47,19 +47,27 @@ class CheckoutController extends Controller
     }
 
     // Function to initiate Mno Checkout
-    public function initiateMnoCheckout()
+    public function mobileCheckout(Request $request)
     {
+
+        $request->validate([
+            'provider' => 'required',
+            'amount' => 'required|integer',
+            'phone' => 'required',
+
+        ]);
+
         $checkoutUrl = 'https://sandbox.azampay.co.tz/azampay/mno/checkout';
 
         // Get the Bearer Token
         $token = $this->getToken();
 
         // Replace with your actual checkout details
-        $accountNumber = '255689532954';
-        $amount = '100'; // Adjust as needed
+        $accountNumber = $request->phone;
+        $amount = $request->amount; // Adjust as needed
         $currency = 'TZS';
         $externalId = '34459349898';
-        $provider = 'Airtel'; // Change based on the selected provider
+        $provider = $request->provider; // Change based on the selected provider
 
     
         // Make a request to the Checkout API

@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/generateToken', [CheckoutController::class, 'generateToken']);
-Route::get('/mnoCheckout', [CheckoutController::class, 'initiateMnoCheckout']);
+Route::post('/mobileCheckout', [CheckoutController::class, 'mobileCheckout'])->name('checkout.mobile');
 
