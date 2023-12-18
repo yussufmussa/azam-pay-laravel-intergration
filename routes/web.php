@@ -19,5 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/generateToken', [CheckoutController::class, 'generateToken']);
+Route::get('/success', [CheckoutController::class, 'generateToken']);
 Route::post('/mobileCheckout', [CheckoutController::class, 'mobileCheckout'])->name('checkout.mobile');
 

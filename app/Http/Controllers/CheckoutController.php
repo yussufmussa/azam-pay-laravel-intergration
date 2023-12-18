@@ -88,7 +88,9 @@ class CheckoutController extends Controller
         // Handle the response from Azampay
         if ($response->getStatusCode() == 200) {
             // Payment initiation successful
-            return $response;
+            $responseData = json_decode($response->getBody(), true);
+            $message = $responseData['message'];
+            return view('success')->with(['message' => $message]);
         } else {
             // Payment initiation failed, handle accordingly
             return "Payment initiation failed: " . $response->getStatusCode();
